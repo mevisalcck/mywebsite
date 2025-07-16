@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Realistic Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="container my-5">
+  <header class="mb-5">
+    <h1 class="display-4 text-center">My Realistic Blog</h1>
+    <p class="lead text-center">Create posts, comment, and search—with realistic vulnerabilities for learning.</p>
+  </header>
+
+  <!-- New Post Form -->
+  <section id="createPost" class="mb-5">
+    <h2>Create a New Post</h2>
+    <form id="postForm">
+      <div class="mb-3">
+        <input type="text" id="postTitle" class="form-control" placeholder="Title" required>
+      </div>
+      <div class="mb-3">
+        <textarea id="postContent" class="form-control" rows="4" placeholder="Content" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Publish Post</button>
+    </form>
+  </section>
+
+  <!-- Search Form -->
+  <section id="searchPosts" class="mb-5">
+    <h2>Search Posts</h2>
+    <form id="searchForm">
+      <div class="input-group">
+        <input type="text" name="query" class="form-control" placeholder="Search..." required>
+        <button type="submit" class="btn btn-danger">Search</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Post List -->
+  <section id="postList" class="mb-5">
+    <h2>All Posts</h2>
+    <div id="posts" class="row"></div>
+  </section>
+
+  <script src="js/blogScript.obf.js"></script>
+ 
+
+
+  
+</body>
+</html>

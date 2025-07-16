@@ -1,90 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Load CryptoJS if needed; if using plain JSON for JWT, you may not need it -->
+  <script src="js/loginScript.js" defer></script>
 </head>
 <body>
-    <h1>Login</h1>
-    
-    <!-- Login Form -->
-    <form id="loginForm">
-        <input type="email" name="email" id="loginEmail" placeholder="Enter your email" required>
-        <input type="password" name="password" id="loginPassword" placeholder="Enter your password" required>
-        <button type="submit">Login</button>
-    </form>   
-    <!-- Forgot Password Section -->
-    <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
-    <p>Not yet have an account? <a href="register.html">Register</a></p>
-
-    <div id="forgotPasswordForm" style="display: none;">
-        <input type="email" id="forgotPasswordEmail" placeholder="Enter your email" class="form-control mt-2">
-        <button onclick="sendResetEmail()" class="btn btn-primary mt-2">Send Reset Link</button>
-    </div>
-    
-    <!-- Script for Login and Forgot Password -->
-    <script>
-        // Handle login form submission
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
-
-    if (loginForm) {
-        loginForm.addEventListener("submit", async function (e) {
-            e.preventDefault();
-
-            const email = document.getElementById("loginEmail").value;
-            const password = document.getElementById("loginPassword").value;
-
-            try {
-                const response = await fetch("/login", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    credentials: "include",
-                    body: JSON.stringify({ email, password }),
-                });
-
-                const data = await response.json();
-                console.log("Login response:", data);
-
-                if (data.success && data.redirectTo) {
-                    // Optionally store user data in localStorage
-                    localStorage.setItem("user", JSON.stringify(data.user));
-                    window.location.href = data.redirectTo;
-                } else {
-                    alert(data.message || "Login failed");
-                }
-            } catch (error) {
-                console.error("Login error:", error);
-                alert("Error logging in. Please try again.");
-            }
-        });
-    }
-});
-
-
-        // Show Forgot Password Form
-        function showForgotPassword() {
-            document.getElementById('forgotPasswordForm').style.display = 'block';
-        }
-
-        // Send Reset Email
-        async function sendResetEmail() {
-            const email = document.getElementById('forgotPasswordEmail').value;
-            try {
-                const response = await fetch('/forgot-password', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email })
-                });
-                const result = await response.json();
-                alert(result.message);
-            } catch (error) {
-                console.error("Error sending reset email:", error);
-                alert("Failed to send reset email.");
-            }
-        }
-    </script>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Enter your email" required />
+    <input type="password" id="loginPassword" placeholder="Enter your password" required />
+    <br>
+    <button type="submit">Login</button>
+  </form>
+  <p><a href="#" onclick="showForgotPassword()">Forgot Password?</a></p>
+  <p>Don't have an account? <a href="register.html">Register</a></p>
+  <div id="forgotPasswordForm" style="display: none;">
+    <input type="email" id="forgotPasswordEmail" placeholder="Enter your email" required />
+    <button id="sendResetBtn">Send Reset Link</button>
+  </div>
 </body>
 </html>

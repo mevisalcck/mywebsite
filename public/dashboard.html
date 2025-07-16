@@ -4,72 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet"> <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/dashboardScript.js" defer></script>
 </head>
-<body class="container mt-5">
-  <h1 class="mb-4">Welcome, <span id="userName"></span>!</h1>
-  <p>Email: <span id="userEmail"></span></p>
-  <p>Joined on: <span id="userCreated"></span></p>
-  <p>Last Login: <span id="lastLogin"></span></p>
-  
-  <h2 class="mt-4">Manage Account</h2>
-  <button class="btn btn-warning" onclick="showChangePassword()">Change Password</button>
-  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</button>
-  <button class="btn btn-secondary" onclick="logout()">Logout</button>
-  
-  <div id="changePasswordForm" class="mt-3" style="display: none;">
-    <input type="password" id="newPassword" class="form-control" placeholder="New Password" required>
-    <button class="btn btn-primary mt-2" onclick="changePassword()">Update Password</button>
-  </div>
-  
-  <!-- Update Profile Form -->  
-  <h2 class="mt-4">Update Profile</h2>
-  <form id="profileForm" class="mb-4">
-      <div class="mb-3">
-          <label for="profileName" class="form-label">Name</label>
-          <input type="text" id="profileName" class="form-control" required>
-      </div>
-      <div class="mb-3">
-          <label for="profileEmail" class="form-label">Email</label>
-          <input type="email" id="profileEmail" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Update Profile</button>
-  </form>
-  
-  <!-- Delete Account Modal -->
-  <div id="deleteAccountModal" class="modal" tabindex="-1">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">Delete Account</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                  <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-danger" onclick="confirmDeleteAccount()">Delete</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  <!-- Profile Picture Section -->
-  <div class="mt-4">
-      <h2>Profile Picture</h2>
-      <img id="profilePicture" src="" alt="Profile Picture" class="img-thumbnail" style="max-width:150px;">
-      <form id="uploadForm" enctype="multipart/form-data" class="mt-3">
-          <input type="file" name="profilePicture" id="profilePictureInput" class="form-control mt-2" accept="image/*" required>
-          <button type="submit" class="btn btn-primary mt-2">Upload</button>
+<body>
+    <h1>Dashboard</h1>
+      <a href="/admin">Admin Panel</a><br>
+      <a href="blog.html">Post Something</a>
+  <main>
+    <section id="profileSection">
+      <h2>Your Profile</h2>
+      <p>Name: <span id="userName"></span></p>
+      <p>Email: <span id="userEmail"></span></p>
+      <p>Joined: <span id="userCreated"></span></p>
+      <p>Last Login: <span id="lastLogin"></span></p>
+      <img id="profilePicture" src="default.png" alt="Profile Picture" width="150">
+      <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="profilePictureInput" accept="image/*">
+        <button type="submit">Upload Profile Picture</button>
       </form>
-  </div>
+    </section>
+    <section id="secureSection">
+      <h2>Secure Data</h2>
+      <button id="loadSecureDataBtn">Load Secure Data</button>
+      <div id="secureDataDiv"></div>
+      <a href="#" id="logout-btn">Logout</a>
+    </section>
+  </main>
   
-  <!-- Dark Mode Toggle -->
-  <button class="btn btn-secondary mt-4" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-  
-  <!-- External JavaScript -->  
-  <script src="script.js"></script>
 </body>
 </html>
