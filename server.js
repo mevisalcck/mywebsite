@@ -5,6 +5,8 @@ const path = require("path");
 const fs = require("fs");
 const https = require("https");
 const cookieParser = require("cookie-parser");
+// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 // Load route modules
 const authApiRoutes = require("./routes/authApiRoutes");     // /api/login, /api/refresh, etc.
