@@ -6,7 +6,7 @@
     "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
     "dotenv": "^17.2.0",
-    "express": "^4.21.2",
+    "express": "^4.22.0",
     "express-mysql-session": "^3.0.3",
     "express-session": "^1.18.1",
     "jsonwebtoken": "^9.0.2",
